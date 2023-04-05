@@ -11,8 +11,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <script src="app.js"></script>
     </head>
-    <body>
+    <body onload="Main();loadStory()">
         <div class="bg">
             <div id="flower_tl">
                 <img src="bg_flower_tl.png" alt="">
@@ -47,7 +48,7 @@
                     </div>
                 </div>
                 <div id="my_story">
-                    <textarea readonly id="storyContent">
+                    <textarea readonly id="storyArea">
 
                     </textarea> 
                 </div>
@@ -60,12 +61,6 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            const content = localStorage.getItem("story");
-            const element = document.getElementById("storyContent");
-            element.value = content;
-        </script>
     </body>
 </html>
 

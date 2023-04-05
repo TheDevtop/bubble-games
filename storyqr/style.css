@@ -1,0 +1,328 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.story{
+    position: relative;
+    padding-inline: 9%;
+    display: flex;
+    flex-direction: column;
+}
+#story_top{
+    padding: 5%;
+display: flex;
+height: 10vh;
+justify-content: space-between;
+font-size: larger;
+}
+#story_top_name,#story_top_shared{
+    align-self: end;
+}
+#story_top_title{
+    font-weight: 900;
+    font-size: x-large;
+  
+}
+#story_middle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#story_middle_avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#story_middle_avatar_img {
+    width: 50%;
+    transform: translate(50%,0);
+}
+
+#story_middle_avatar_btn{
+    background-color: #5FA2D4;
+    color: white;
+    padding-inline: 5%;
+    padding-block: 2%;
+    border-radius: 95px;
+    width: 66%;
+    text-align: center;
+    font-size: x-large;
+    margin-block: 10%;
+    font-weight: bold;
+}
+#story_btm{
+    display: flex;
+    font-size: x-large;
+    justify-content: flex-start;
+    background-color: #5FA2D4;
+    padding-block:2% ;
+    border-radius: 95px;
+    color: white;
+}
+#story_btm > div{
+    width: 33%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#story_btm_button2{
+    border-inline: 1px solid white;
+}
+#story_middle_story{
+    padding-bottom: 10%;
+text-align: justify;
+font-size: larger;}
+.bg{
+    position: fixed;
+}
+#flower_tl{
+    transform: translate(-30%, -33%);
+}
+#flower_bl{
+    transform: translate(-10%, 20%);
+    bottom: 0;
+    position: inherit;
+}
+#flower_br{
+    position: inherit;
+    bottom: 0;
+    right: 0;
+    transform: translate(25%, 30%);
+}
+#story_btn{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#btn_story{
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+}
+
+#btn_publish{
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 50px;
+}
+#btn_preview {
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+}
+#btn_story:hover, #btn_preview:hover, #btn_publish:hover, #btn_customize {
+    cursor: pointer;
+  }
+
+#btn_customize{
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    width: 60vw;
+    height: 10vh; 
+    margin: 5vh auto;
+}
+#btn_record_audio{
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 10px;
+}
+#btn_write_story{
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 10px;
+}
+#btn_theme{
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 10px;
+}
+#btn_tell_your_story{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    margin-bottom: 80px;
+    margin-top: 90px;
+}
+#my_story{
+    margin-top: 20px;
+    font-size: 20px;
+}
+#outer_audio{
+    margin-top: 50px;
+}
+#icon_play{
+    width: 70px;
+    height: 70px;
+    margin-left: 35px;
+}
+#container_audio{
+    border: 2px solid white;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid black;
+    margin-top: 50px;
+    border-width: 1px;
+    height: 300px;
+    margin-bottom: 50px;
+}
+#story_btm_2{
+    display: flex;
+    font-size: x-large;
+    justify-content: flex-start;
+    background-color: #5FA2D4;
+    padding-block:2% ;
+    border-radius: 95px;
+   
+}
+#audio{
+    width: 70px;
+    height: 70px;
+}
+#trash{
+    width: 70px;
+    height: 70px;
+
+}
+#play_trash{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    justify-content: space-around;
+}
+#btn_save_audio{
+    background-color: #5FA2D4;
+    padding-block: 2%;
+    border-radius: 95px;
+    font-size: x-large;
+    justify-content: space-evenly;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+
+    width: 300px; 
+    margin: 0 auto; 
+    display: block;
+    margin-bottom: 50px;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    background-color: #f8f8f8;
+    resize: none;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  #microphone{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 70px;
+  right: 20px;
+
+  }
+  #text_container{
+    position: relative;
+    display: inline-block;
+  }
+  #header{
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .color-box {
+    width: calc(50% - 20px);
+    height: 200px;
+    margin: 10px;
+    border-radius: 30px;
+    outline: auto;
+    outline-color: #ccc;
+  }
+  
+  .blue {
+    background-color: blue;
+  }
+  
+  .green {
+    background-color: green;
+  }
+  
+  .yellow {
+    background-color: yellow;
+  }
+  
+  .orange {
+    background-color: orange;
+  }
+  
+  .red {
+    background-color: red;
+  }
+  
+  .purple {
+    background-color: purple;
+  }
+#btn_container{
+    margin-top: 50px
+
+    
+}

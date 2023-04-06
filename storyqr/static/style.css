@@ -23,6 +23,7 @@ font-size: larger;
     font-size: x-large;
   
 }
+
 #story_middle{
     display: flex;
     flex-direction: column;
@@ -45,6 +46,7 @@ font-size: larger;
     padding-inline: 5%;
     padding-block: 2%;
     border-radius: 95px;
+    /* border: 1px solid black; */
     width: 66%;
     text-align: center;
     font-size: x-large;
@@ -144,8 +146,8 @@ font-size: larger;}
     font-size: x-large;
     font-weight: bold;
     border: none;
-    width: 60vw;
-    height: 10vh; 
+    width: 60vw; /* use vw units for width */
+    height: 10vh; /* use vh units for height */
     margin: 5vh auto;
 }
 #btn_record_audio{
@@ -323,6 +325,25 @@ textarea {
   }
 #btn_container{
     margin-top: 50px
-
     
+}
+
+
+#icons {
+  display: grid;
+  justify-content: center;
+}
+
+#bar {
+  position: relative;
+}
+
+#items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 10px; /* You can add a gap for spacing between items */
+}
+
+#items > div {
+  position: relative;
 }

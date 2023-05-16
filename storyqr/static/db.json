@@ -1,0 +1,38 @@
+[
+    {
+       "id": 0,
+       "date": "2020-10-10",
+       "type": "story",
+       "story": "Two days ago, I was with my dog, Daisy, enjoying the golden glow of the setting sun. We shared laughter and love, unaware that it was our last adventure together. Yesterday, Daisy vanished, leaving a gaping void in my heart. I searched tirelessly, but she remained lost. As I mourned, I planted a tree in her memory, pouring my love into its roots. With each passing day, the tree will grow, reminding me that our bond endures beyond Daisy's absence, our love forever entwined in nature's gentle embrace.",
+       "author": "Emily",
+       "avatar": {
+          "top": 1,
+          "facialHair": 1,
+          "hair": 1,
+          "eyes": 1,
+          "skin": 1
+       },
+       "background":{
+         "type":1,
+         "color":4
+       }
+    },
+    {
+       "id": 1,
+       "date": "2020-04-20",
+       "type": "story",
+       "story": "Two weeks ago, I discovered a tiny, abandoned kitten shivering behind my garden shed. I scooped her up, her frightened eyes meeting mine, and knew I had found a new friend. We named her Luna, and with each passing day, our bond grew stronger. Luna's playful antics and gentle purrs filled my home with joy and laughter. As we snuggled together on cozy evenings, I realized that sometimes, the most unexpected moments can lead to the most cherished friendships, and Luna's presence became the brightest light in my life.",
+       "author": "Andrew",
+       "avatar": {
+          "top": 1,
+          "facialHair": 1,
+          "hair": 1,
+          "eyes": 1,
+          "skin": 1
+       },
+       "background":{
+         "type":1,
+         "color":7
+       }
+    }
+ ]

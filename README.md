@@ -1,7 +1,7 @@
-# Fontys Bubble Games (Pocketsize)
+# Bubble Games (Pocketsize)
 
-### Prototypes:
+### Bridges
 
-1. StoryQR	(./storyqr/)
-2. Gratia	(./gratia)
+An mobile application that inspires people to get out of their comfort zone.
 
+### StoryQR

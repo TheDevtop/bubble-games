@@ -1,0 +1,140 @@
+{
+    "stories": [
+      {
+        "id": 101,
+        "title": "Journey to Self-Discovery through Travel",
+        "storyType": 10,
+        "dateTime": "2022-05-10 09:30:00"
+      },
+      {
+        "id": 102,
+        "title": "The Power of Random Acts of Kindness",
+        "storyType": 11,
+        "dateTime": "2022-06-15 14:45:00"
+      },
+      {
+        "id": 103,
+        "title": "Rediscovering Passion for Hobbies",
+        "storyType": 10,
+        "dateTime": "2022-03-02 18:20:00"
+      },
+      {
+        "id": 104,
+        "title": "Overcoming Fear and Taking Risks",
+        "storyType": 8,
+        "dateTime": "2022-07-21 11:10:00"
+      },
+      {
+        "id": 105,
+        "title": "The Art of Effective Communication",
+        "storyType": 5,
+        "dateTime": "2022-04-30 16:05:00"
+      },
+      {
+        "id": 106,
+        "title": "Finding Serenity in Nature's Embrace",
+        "storyType": 7,
+        "dateTime": "2022-08-17 13:50:00"
+      },
+      {
+        "id": 107,
+        "title": "Chasing Dreams and Defying Expectations",
+        "storyType": 4,
+        "dateTime": "2022-09-05 10:15:00"
+      },
+      {
+        "id": 108,
+        "title": "The Healing Power of Art Therapy",
+        "storyType": 3,
+        "dateTime": "2022-11-18 15:25:00"
+      },
+      {
+        "id": 109,
+        "title": "Balancing Adventure and Responsibility",
+        "storyType": 9,
+        "dateTime": "2022-10-10 17:40:00"
+      },
+      {
+        "id": 110,
+        "title": "Embracing Imperfections and Cultivating Self-Love",
+        "storyType": 8,
+        "dateTime": "2022-12-29 20:30:00"
+      },
+      {
+        "title": "dtdtd5d",
+        "storyType": 1,
+        "dateTime": "2023-05-25 08:36:42",
+        "id": 111
+      },
+      {
+        "title": "gygiiugae",
+        "storyType": 3,
+        "dateTime": "2023-05-25 10:11:21",
+        "id": 112
+      },
+      {
+        "title": "vzdv",
+        "storyType": 1,
+        "dateTime": "2023-05-25 10:12:09",
+        "id": 113
+      },
+      {
+        "title": "fgnfgn",
+        "storyType": 3,
+        "dateTime": "2023-05-25 12:45:43",
+        "id": 114
+      }
+    ],
+    "storyTypes": [
+      {
+        "id": 1,
+        "name": "Work",
+        "desc": "Stories about work and career."
+      },
+      {
+        "id": 2,
+        "name": "Family",
+        "desc": "Stories about family relationships."
+      },
+      {
+        "id": 3,
+        "name": "Love",
+        "desc": "Stories about love and relationships."
+      },
+      {
+        "id": 4,
+        "name": "Future",
+        "desc": "Stories about aspirations and goals."
+      },
+      {
+        "id": 5,
+        "name": "Friends",
+        "desc": "Stories about friendships and connections."
+      },
+      {
+        "id": 6,
+        "name": "Money",
+        "desc": "Stories related to finances and wealth."
+      },
+      {
+        "id": 7,
+        "name": "Health",
+        "desc": "Stories about physical and mental well-being."
+      },
+      {
+        "id": 8,
+        "name": "Past",
+        "desc": "Stories about past experiences and memories."
+      },
+      {
+        "id": 9,
+        "name": "Sport",
+        "desc": "Stories related to sports and athletics."
+      },
+      {
+        "id": 10,
+        "name": "School",
+        "desc": "Stories about education and learning."
+      }
+    ]
+  }

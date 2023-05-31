@@ -10,7 +10,7 @@ const getSingleTypeStories = ()=>{
                         
 try{
     
-let data = await fetch('https://145.220.74.171:8082/database/stories')
+let data = await fetch('http://localhost:3000/stories')
 if (!data.ok){
     throw Error('data not available')
 }

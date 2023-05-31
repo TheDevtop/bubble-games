@@ -7,7 +7,7 @@ const getSingleType = () => {
     const load = async (id) => {
        
         try {
-            const response = await fetch('https://145.220.74.171:8082/database/types')
+            const response = await fetch('http://localhost:3000/storyTypes')
             if (!response.ok) {
                 throw Error('no data available')
             }

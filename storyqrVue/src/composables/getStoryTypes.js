@@ -6,7 +6,7 @@ const getStoryTypes = () => {
     
     const load = async () => {
         try {
-        const data = await fetch('https://145.220.74.171:8082/database/types')
+        const data = await fetch('http://localhost:3000/storyTypes')
         if (!data.ok) {
             throw Error('no data available')
         }

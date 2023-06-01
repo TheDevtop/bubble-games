@@ -1,5 +1,5 @@
 <template>
-    <div class="singleThemeBg" :class="'storyType-' + storyType.id">
+    <div class="singleThemeBg" v-if="storyType" :class="'storyType-' + storyType.id">
         <div class="toprow">   <div id="backArrow" @click="$router.go(-1)">←</div><h2>{{storyType.name}}</h2></div>
         <p>{{ storyType.desc }}</p>
 

@@ -29,10 +29,9 @@
         <input type="file" id="audio" name="audio" accept="audio/*">
         <br>
       </div>
+      
       <br>
-      <label for="storyDescription">Story Description</label>
-      <br>
-      <AvatarBuilder />
+      <AvatarBuilder @avatar-data="handleAvatarData"/>
       <br>
     
       <input type="submit" value="CONTINUE  →">
@@ -56,9 +55,12 @@ export default {
       id: '',
       title: '',
       storyType: '',
-      desc: '',
       dateTime: ''
     });
+    const handleAvatarData = (data) => {
+  story.value.avatarData = data;
+  console.log(story)
+};
     
      const { storyTypes, error2, load: loadTypes } = getStoryTypes();
     loadTypes();
@@ -124,7 +126,7 @@ function showScreen() {
       // Add the dateTime field to the story object with the current date and time
       story.value.dateTime = currentDateTime;
 
-      fetch('/stories/single', {
+      fetch('http://localhost:3000/stories', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -146,7 +148,7 @@ function showScreen() {
         });
     };
     
-    return { story, storyTypes, postStoryData,showBlackScreen }
+    return { story, storyTypes, postStoryData,showBlackScreen,handleAvatarData }
   }
 }
 </script>

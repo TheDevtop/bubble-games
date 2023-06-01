@@ -3,7 +3,7 @@
     <div v-if="colorBg">
     <div @click="showFade"  class="storylet"  :class="'storyType-' + story.storyType">
     <div  >
-      <div id="storyletToprow"> <div id="avatarPic"></div>
+      <div id="storyletToprow"> <div id="avatarPic"><Avatar style="  position: relative;  left: -23px; top: 15px;" :avatar-data="story.avatarData"/></div>
       <h2 >{{ story.title }}</h2></div> 
      
       <p class="storyletDateTime">{{ story.dateTime }}</p>
@@ -14,7 +14,7 @@
 <div v-else>
     <div  @click="showFade" class="storylet" :to="{name:'story', params:{id:story.id}}">
     <div  >
-      <div id="storyletToprow"> <div id="avatarPic"></div>
+      <div id="storyletToprow"> <div id="avatarPic"><Avatar style="  position: relative;  left: -23px; top: 15px;" :avatar-data="story.avatarData"/></div>
       <h2 >{{ story.title }}</h2></div> 
      
       <p class="storyletDateTime">{{ story.dateTime }}</p>
@@ -28,9 +28,13 @@
 <script>
 import { computed, onMounted, onUnmounted, onUpdated,ref, watch,nextTick } from 'vue';
 import {useRouter} from 'vue-router';
+import Avatar from './Avatar.vue';
 
 export default{
     name: 'SingleStory',
+    components:{
+        Avatar
+    },
     props: {
         story: {
             type: Object,
@@ -65,8 +69,10 @@ export default{
         showFadeScreen.value=true;
         console.log('showing')
         setTimeout(() => {
-            router.push({name:'story', params:{id:props.story.id}});
+            sessionStorage.setItem('backgroundColor', bgColor.value);
             showFadeScreen.value=false
+            router.push({name:'story', params:{id:props.story.id}});
+            
         }, 1500);
     }
     
@@ -76,7 +82,7 @@ export default{
     if (storyElement) {
         bgColor.value = window.getComputedStyle(storyElement).getPropertyValue('background-color');
     }
-    console.log(bgColor)
+   
         })
         onUnmounted(() => {
             

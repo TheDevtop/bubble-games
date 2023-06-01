@@ -1,27 +1,29 @@
 import { ref } from 'vue'
 
-const getSingleType = () => {
-    const storyType = ref([])
+const getSingleType = (id) => {
+    const storyType = ref(null)
     const error = ref(null)
-    
+  
     const load = async (id) => {
-       
-        try {
-            const response = await fetch('http://localhost:3000/storyTypes')
-            if (!response.ok) {
-                throw Error('no data available')
-            }
-            const data = await response.json()
-            console.log(data)
-            storyType.value = data.find(type=>type.id==id)
-            console.log(storyType.value, id)
-        } catch (err) {
-            error.value = err.message
-       
+      try {
+        // Adjust the URL to match your proxy setup
+        const url = "http://localhost:3000/storyTypes?id=" + id
+        const res = await fetch(url)
+
+        if (!res.ok) {
+          throw Error('No data available')
         }
+        const data = await res.json();
+        storyType.value = data[0];  // Get the first item from the array
+console.log('Story:', storyType.value);
+
+        
+      } catch (err) {
+        error.value = err.message
+      }
     }
-    
-    return {load, storyType, error}
-    }
+  
+    return { load, storyType, error }
+}
 
 export default getSingleType

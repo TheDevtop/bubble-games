@@ -3,10 +3,8 @@
 ### Bridges
 
 An mobile application that inspires people to get out of their comfort zone.
+The directory contains the backend implementation.
 
-### StoryQR
+### StoryBE
 
-### ScapesBE
-
-The backend of storyQR/StoryScapes.
-
+This directory contains the **Bubble Games: StoryScapes** backend implementation.

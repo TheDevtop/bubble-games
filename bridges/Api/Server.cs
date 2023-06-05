@@ -1,6 +1,7 @@
 namespace Bridges.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 public static partial class ApiServer
@@ -18,7 +19,21 @@ public static partial class ApiServer
 
     public static void Start(string[] args)
     {
-        wapp = WebApplication.CreateBuilder(args).Build();
+
+        var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(
+                              policy =>
+                              {
+                                  policy.AllowAnyOrigin();
+                                  policy.AllowAnyMethod();
+                              });
+        });
+
+        wapp = builder.Build();
+        wapp.UseCors();
 
         foreach (var entry in Registry)
         {

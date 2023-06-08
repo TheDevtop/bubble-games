@@ -1,0 +1,432 @@
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url(@/assets/Montserrat-VariableFont_wght.ttf) format('truetype');
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
+  .addStory{
+    margin: 5%;
+  }
+  .toprow{
+    display: flex;
+    font-size: 20px;
+    padding-block-start: 5%;
+  }
+  .toprowPlayer{
+    background-color: #f5f5f5;
+     display: flex;
+    font-size: 20px;
+    padding-block-start: 5%;
+  }
+  .black-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 200% 200%;
+    background-image: linear-gradient(to top right, rgb(0,0,0) 50%, transparent 50%);
+    background-position: 100% 100%;
+    transition: background-position .5s ease;
+  }
+  
+  .black-screen.reveal {
+    background-position: 0 0;
+  }
+  .toprow>h2{
+    margin: 0;
+    padding: 0;
+    margin-inline: 5%;
+    font-size: 20px;
+  }
+  
+label{
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  margin-block-end: 2%;
+  margin-block-start: 5%;
+}
+
+input,select,textarea{
+  width: 100%;
+  font-size: 18px;
+  padding: 2%;
+  font-family: 'Montserrat', sans-serif;
+}
+textarea{
+  height: 20vh;
+  font-size: 14PX;
+}
+input[type="file"] {
+  display: none;
+}
+input[type="submit"]{
+  color: white;
+  background-color: black;
+  border: 1px solid ;
+  border-radius: 5%;
+  padding: 4%;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#audio{
+
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ 
+}
+#audioUpload{
+
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23333' stroke-width='1' stroke-dasharray='5' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+  border-radius: 5px;
+  width: 100%;
+  min-height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+  #app,.player, .singleStory {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  
+  #bubbleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+   width: 360px;
+    height: 300px;
+  }
+  
+  .storyBubble {
+    border-radius: 50%;
+    position: absolute;
+    margin: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  transition: transform 1.5s cubic-bezier(0.61, 0.04, 1, 1) ,
+    width 1.5s cubic-bezier(0.61, 0.04, 1, 1),
+    height 1.5s cubic-bezier(0.61, 0.04, 1, 1),
+    border-radius .5s ease;
+  }
+  #storyletToprow{
+    display: flex;
+
+  }
+  .bottomRowPlayer{
+    margin: 5%;
+  }
+  #typeTime{
+    color: #474645;
+  }
+  #avatarPic{
+    width:  100px !important;
+    height: 100px !important;
+    max-width: 100px;
+    min-width: 100px;
+    background-color: #f5f5f5;
+    border-radius: 100%;
+    margin-right: 5%;
+  }
+  .storyletDateTime
+{
+  color: #474645;
+}  
+.storylet {
+  width: 90%;
+  margin-block: 5%;
+  padding: 5%;
+  border-radius: 2%;
+  background-color: #fff;
+}
+
+.playerAvatar{
+  height: 45vh;
+  width: 90vw;
+  margin-bottom: 5%;
+  border-radius: 20%;
+}
+  .storyType-1 { background-color: #9CA4E7; }
+  #storyBubble-1 { width: 140px; height: 140px; }
+  
+  .storyType-2 { background-color: #CAE9EE; }
+  #storyBubble-2 { width: 85px; height: 85px; }
+  
+  .storyType-3 { background-color: #DC8DAC; }
+  #storyBubble-3 { width: 120px; height: 120px; }
+  
+  .storyType-4 { background-color: #E9B8E4; }
+  #storyBubble-4 { width: 100px; height: 100px; }
+  
+  .storyType-5 { background-color: #DEAF86; }
+  #storyBubble-5 { width: 80px; height: 80px; }
+  
+  .storyType-6 { background-color: #E19086; }
+  #storyBubble-6 { width: 110px; height: 110px; }
+  
+  .storyType-7 { background-color: #DDEEC3; }
+  #storyBubble-7 { width: 105px; height: 105px; }
+  
+  .storyType-8 { background-color: #9FE0DC; }
+  #storyBubble-8 { width: 95px; height: 95px; }
+  
+  .storyType-9 { background-color: #8FD4C8; }
+  #storyBubble-9 { width: 125px; height: 125px; }
+  
+  .storyType-10 { background-color: #B79ACE; }
+  #storyBubble-10 { width: 90px; height: 90px; }
+  
+  .storyType-11 { background-color: blanchedalmond; }
+  #storyBubble-11 { width: 115px; height: 115px; }
+  
+#homeButtons{
+    display: flex;
+  padding-block:5% ;
+    width: 90vw;
+    justify-content: space-around;
+}
+
+  #homeDescription {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    margin-block-end: 450px;
+    width: 90%;
+  }
+  
+  a, h1, h2, h3 ,button{
+    all: unset;
+    display: block;
+  }
+  textarea, input, select{
+    background-color: inherit;
+    border: 1px solid black;
+    border-radius: 5%;
+  }
+button{
+  border-radius: 7%;
+  border: black 1px solid;
+  width: 25%;
+  padding: 3%;
+  text-align: center;
+}
+  
+  h1, h2 {
+    font-weight: 600;
+  }
+  
+  h1 { font-size: 4rem; }
+  h2 { font-size: 1rem; }
+  
+  .singleThemeStorylet{
+    background-color: #f5f5f5;
+  }
+  
+  .singleThemeBg {
+    min-height: 100vh;
+    min-width: 100vw;
+    padding: 5%;
+  }
+  
+
+  #exploreHome {
+    margin: 5%;
+  }/* Define the animation */
+/* Define the animation */
+
+
+.storyBubble{
+  
+}
+
+@keyframes reveal {
+  0% {
+    background-position: top right;
+  }
+  100% {
+    background-position: bottom left;
+  }
+}
+@keyframes unreveal {
+  100% {
+    background-position: top right;
+  }
+  0% {
+    background-position: bottom left;
+  }
+}
+
+.black-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 200% 200%;
+  background-image: linear-gradient(to top right, rgb(0,0,0) 50%, transparent 50%);
+  background-position: top right;
+  
+  display: none; /* initially hidden */
+}
+
+.black-screen.reveal {
+  animation: reveal 1.5s ease forwards;
+  display: block; /* shown when the reveal class is added */
+}
+.black-screen.unreveal{
+  animation: unreveal 1.5s ease forwards;
+  display: block;
+}
+
+.fadeScreenStorylet.reveal{
+  animation: reveal 1.5s ease forwards;
+  display: block;
+}
+.fadeScreenStorylet.unreveal {
+  animation: unreveal 1.5s ease forwards;
+  display: block;
+}
+.playerViewFade{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bgCol);
+  display: block;
+}
+.smallAvatar{
+  width: inherit;
+  height: inherit;
+}
+.fadeScreen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 200% 200%;
+  background-image: linear-gradient(to top right, rgb(0,0,0) 50%, transparent 50%);
+  background-position: top right;
+  display: none;
+  z-index: 99;
+}
+.fadePLayerScreen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 200% 200%;
+  background-image: linear-gradient(to top right,var(--bgColor) 50%, transparent 50%);
+  background-position: top right;
+  display: none;
+}
+.fadeScreenStorylet{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 200% 200%;
+  background-image: linear-gradient(to top right, var(--bgCol) 50%, transparent 50%);
+  background-position: top right;
+  display: none;
+  z-index: 99;
+  
+}
+
+.selectedHair {
+  position: absolute;
+  width: inherit;
+  left: -37px;
+  top: -38px;
+  filter: grayscale(1) sepia(1)  brightness(calc(var(--brightness) * 1%)) contrast(calc(var(--contrast) * 1%)) hue-rotate(calc(var(--hue) * 1deg));
+}
+.selectedSkin{
+    width: inherit;
+    position: absolute;
+  }
+  .avatar{
+    position: relative;
+    transform: scale(.15);
+  }
+  .selectedAvatar{
+ 
+    position: relative;
+
+   }
+    .hairColorPreview img {
+      filter: grayscale(1) sepia(100%)  brightness(calc(var(--brightness) * 1%)) contrast(calc(var(--contrast) * 1%)) hue-rotate(calc(var(--hue) * 1deg));
+    }
+    .selectedAvatar>div{       padding-bottom: 255px;
+      left: -5px;
+      transform: scale(0.3);
+    }
+
+.avatarPlacement{
+position: relative;
+
+}
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+.skin-container, .hair-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.skin-container>div>img,.hair-container>div>img {
+  width: 100px;
+}
+
+@keyframes bubbleExpand {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(100);
+  }
+}
+#containerContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+.expand {
+  height: inherit;
+  width: inherit;
+  border: inherit;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bubbleExpand 1.5s cubic-bezier(0.61, 0.04, 1, 1) forwards;
+  z-index: 99999;
+}
+
+
+
+
+

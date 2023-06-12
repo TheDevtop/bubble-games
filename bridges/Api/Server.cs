@@ -33,6 +33,7 @@ public static partial class ApiServer
         });
 
         wapp = builder.Build();
+        wapp.Urls.Add("http://0.0.0.0:5000");
         wapp.UseCors();
 
         foreach (var entry in Registry)

@@ -9,7 +9,7 @@ using System.Threading;
 // This is the user and authentication database.
 public static class UserDB
 {
-    const string name = "user.db";
+    const string name = "/data/user.db";
     static int syncTimeout;
     static Thread syncThread;
     public static UserDS DataStore;

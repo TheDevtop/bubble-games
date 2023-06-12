@@ -12,7 +12,7 @@ using Bridges.Shared.Entities;
 // WORK IN PROGRESS
 public static class ContactDB
 {
-    const string name = "contact.db";
+    const string name = "/data/contact.db";
     static int syncTimeout;
     static Thread syncThread;
     public static ContactDS DataStore;

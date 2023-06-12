@@ -126,7 +126,7 @@ function showScreen() {
       // Add the dateTime field to the story object with the current date and time
       story.value.dateTime = currentDateTime;
 
-      fetch('http://localhost:3000/stories', {
+      fetch('http://145.220.74.171:3000/stories', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

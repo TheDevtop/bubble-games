@@ -7,7 +7,7 @@ const getSingleStory = (id) => {
     const load = async () => {
       try {
         // Adjust the URL to match your proxy setup
-        const url = "http://localhost:3000/stories?id=" + id
+        const url = "http://145.220.74.171:3000/stories?id=" + id
         const res = await fetch(url)
 
         if (!res.ok) {

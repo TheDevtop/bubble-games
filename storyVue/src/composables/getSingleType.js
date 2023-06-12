@@ -7,7 +7,7 @@ const getSingleType = (id) => {
     const load = async (id) => {
       try {
         // Adjust the URL to match your proxy setup
-        const url = "http://localhost:3000/storyTypes?id=" + id
+        const url = "http://145.220.74.171:3000/storyTypes?id=" + id
         const res = await fetch(url)
 
         if (!res.ok) {

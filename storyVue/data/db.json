@@ -131,6 +131,17 @@
         "skinId": 3,
         "hairColorId": 3
       }
+    },
+    {
+      "id": 7262093539985887,
+      "title": "LMAO",
+      "storyType": 3,
+      "dateTime": "2023-06-12 11:40:00",
+      "avatarData": {
+        "hairId": 8,
+        "skinId": 1,
+        "hairColorId": 1
+      }
     }
   ],
   "storyTypes": [

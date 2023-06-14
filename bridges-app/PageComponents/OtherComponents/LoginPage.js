@@ -1,15 +1,33 @@
-﻿import React from "react";
-import * as Glue from "../../Components/GlueCode";
-import { AuthHeader } from '../../Components/Forms';
+﻿import React, {useState} from "react";
+import * as Glue from "../../LibGlue/LibGlue";
 import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import axios from 'axios';
 
 export default function LoginPage({ navigation }) {
-    const handleLogin = () => {
-        Glue.Login(new AuthHeader("admin", "pass123"));
-        //navigation.navigate("Main");
-    };
+    const [name, setName] = useState('');
+    const [pass, setPass] = useState('');
+
+    function handleLogin() {
+        const headers = {
+            'Content-Type': 'application/json'
+          }
+            const url = Glue.baseURL + "/user/login";
+            const body = JSON.stringify(new Glue.AuthHeader(name, pass));
+        
+            axios.post(url, body, {"headers" : headers})
+              .then(function (response) {
+                const rf = response.data;
+                console.log(rf);
+                if (rf.Code == 0) {
+                  navigation.navigate("Main");
+                }
+              })
+              .catch(function (error) {
+                console.log(error)
+              });
+    }
 
     const handleSignUpPress = () => {
         navigation.navigate("SignupPage");
@@ -28,8 +46,8 @@ export default function LoginPage({ navigation }) {
                 <Text style={styles.signUpLink}>Sign up for free</Text>
             </TouchableOpacity>
             <View style={styles.inputsContainer}>
-                <TextInput style={styles.input} placeholder="Email" keyboardType="email-address" />
-                <TextInput style={styles.input} placeholder="Password" secureTextEntry />
+                <TextInput onChangeText={newName => setName(newName)} style={styles.input} placeholder="Email" keyboardType="email-address" />
+                <TextInput onChangeText={newPass => setPass(newPass)} style={styles.input} placeholder="Password" secureTextEntry />
                 <TouchableOpacity>
                     <Text style={styles.forgotPasswordText}>Forgot password?</Text>
                 </TouchableOpacity>

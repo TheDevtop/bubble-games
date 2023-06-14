@@ -28,6 +28,7 @@ public static partial class ApiServer
                               policy =>
                               {
                                   policy.AllowAnyOrigin();
+                                  policy.WithOrigins("*");
                                   policy.AllowAnyMethod();
                               });
         });

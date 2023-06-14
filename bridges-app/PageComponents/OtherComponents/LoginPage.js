@@ -1,13 +1,14 @@
 ﻿import React from "react";
+import * as Glue from "../../Components/GlueCode";
+import { AuthHeader } from '../../Components/Forms';
 import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 export default function LoginPage({ navigation }) {
     const handleLogin = () => {
-        // Handle login logic here
-        // After successful login, navigate to the MainContainer
-        navigation.navigate("Main");
+        Glue.Login(new AuthHeader("admin", "pass123"));
+        //navigation.navigate("Main");
     };
 
     const handleSignUpPress = () => {

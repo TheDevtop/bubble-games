@@ -30,6 +30,7 @@ public static partial class ApiServer
                                   policy.AllowAnyOrigin();
                                   policy.WithOrigins("*");
                                   policy.AllowAnyMethod();
+                                  policy.AllowAnyHeader();
                               });
         });
 

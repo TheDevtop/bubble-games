@@ -3,19 +3,15 @@ import {View, Text, StyleSheet, Animated, PanResponder, TouchableOpacity} from "
 import Icon from "react-native-vector-icons/Ionicons";
 import { CheckBox } from "react-native-elements";
 import {Ionicons} from "@expo/vector-icons";
+import * as Glue from "../../LibGlue/LibGlue";
 
 export default function EmpathyCardsPage({ navigation }) {
-    const [cards, setCards] = useState([
-        "Card 1",
-        "Card 2",
-        "Card 3",
-        "Card 4"
-    ]);
+    const [cards, setCards] = useState(Glue.GlueStore.Cards);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [pan] = useState(new Animated.ValueXY());
     const [opacity] = useState(new Animated.Value(1));
     const [selectedCardIndex, setSelectedCardIndex] = useState(0);
-
+    
     useEffect(() => {
         pan.setValue({ x: 0, y: 0 });
         opacity.setValue(1);
@@ -86,10 +82,7 @@ export default function EmpathyCardsPage({ navigation }) {
                             {...panResponder.panHandlers}
                             style={[styles.card, cardStyles]}
                         >
-                            <Text style={styles.cardText}>{cards[currentCardIndex]}</Text>
-                            <Text style={styles.motivationalText}>
-                                This is a motivational text
-                            </Text>
+                            <Text style={styles.motivationalText}>{cards[currentCardIndex]}</Text>
                         </Animated.View>
                         <View style={styles.radioButtonContainer}>
                             {cards.map((_, index) => (

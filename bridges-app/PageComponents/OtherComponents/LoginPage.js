@@ -21,6 +21,8 @@ export default function LoginPage({ navigation }) {
                 const rf = response.data;
                 console.log(rf);
                 if (rf.Code == 0) {
+                    Glue.GlueStore.User = name;
+                    Glue.GlueStore.Password = pass;
                   navigation.navigate("Main");
                 }
               })

@@ -2,11 +2,17 @@
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { useState } from "react";
 import { Ionicons } from '@expo/vector-icons';
+import * as Glue from "../LibGlue/LibGlue";
 
 export default function HomePage({ navigation }) {
     const [isCardHovered1, setCardHovered1] = useState(false);
     const [isCardHovered2, setCardHovered2] = useState(false);
     const [isCardHovered3, setCardHovered3] = useState(false);
+
+    if (Glue.GlueStore.CardsLoaded != true) {
+        Glue.GlueStore.Cards = Glue.PullQuotes(4);
+        Glue.GlueStore.CardsLoaded = true;
+    }
 
     return (
         <View style={styles.container}>

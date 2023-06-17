@@ -1,12 +1,9 @@
 namespace Bridges.Databases;
 
 using System;
-using System.Linq;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
-using Bridges.Shared;
-using Bridges.Shared.Entities;
 
 // Stores contacs
 // WORK IN PROGRESS

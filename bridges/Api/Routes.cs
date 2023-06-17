@@ -6,6 +6,8 @@ public static partial class ApiServer
     static class Routes
     {
         public const string ping = "/ping";
+        public const string templateUser = "/template/user";
+        public const string templateChat = "/template/chat";
         public const string userCreate = "/user/create";
         public const string userLogin = "/user/login";
         public const string contactCreate = "/contact/create";

@@ -8,6 +8,29 @@ namespace Bridges.Logic;
 
 static class ChatLogic
 {
+    public static ChatDS Template()
+    {
+        var cds = new ChatDS();
+        var adminQueue = new Queue<Message>();
+        var foobarQueue = new Queue<Message>();
+
+        adminQueue.Enqueue(new Message
+        {
+            MessageContent = "Lorem ipsum",
+            SourceUser = "foobar"
+        });
+
+        foobarQueue.Enqueue(new Message
+        {
+            MessageContent = "Hello, world!",
+            SourceUser = "admin"
+        });
+
+        cds.Add("admin", adminQueue);
+        cds.Add("foobar", foobarQueue);
+
+        return cds;
+    }
     public static Result<bool> SendMessage(string targetUser, Message msg)
     {
         var result = new Result<bool>();
@@ -16,17 +39,37 @@ static class ChatLogic
             result.Error = new Exception(LogicErrors.errNoUser);
             return result;
         }
+
+        // Check for the target user
         if (ChatDB.DataStore.ContainsKey(targetUser))
         {
             ChatDB.DataStore[targetUser].Enqueue(msg);
-            return result;
         }
-        lock (ChatDB.DataStore)
+        else
         {
-            var queue = new Queue<Message>();
-            queue.Enqueue(msg);
-            ChatDB.DataStore.Add(targetUser, queue);
+            lock (ChatDB.DataStore)
+            {
+                var queue = new Queue<Message>();
+                queue.Enqueue(msg);
+                ChatDB.DataStore.Add(targetUser, queue);
+            }
         }
+
+        // Do the same for the source user
+        if (ChatDB.DataStore.ContainsKey(msg.SourceUser))
+        {
+            ChatDB.DataStore[msg.SourceUser].Enqueue(msg);
+        }
+        else
+        {
+            lock (ChatDB.DataStore)
+            {
+                var queue = new Queue<Message>();
+                queue.Enqueue(msg);
+                ChatDB.DataStore.Add(msg.SourceUser, queue);
+            }
+        }
+
         return result;
     }
 
@@ -49,10 +92,6 @@ static class ChatLogic
         }
         result.Value = msgList.ToArray();
         result.Error = null;
-        lock (ChatDB.DataStore[targetUser])
-        {
-            ChatDB.DataStore[targetUser].Clear();
-        }
         return result;
     }
 }

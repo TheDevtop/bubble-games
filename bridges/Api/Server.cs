@@ -9,10 +9,12 @@ public static partial class ApiServer
     static WebApplication wapp;
     static Shared.ApiHandler[] Registry = {
         new Shared.ApiHandler(Routes.ping, HttpMethods.Get, Implementor.ping),
+        new Shared.ApiHandler(Routes.templateUser, HttpMethods.Get, Implementor.TemplateUser),
+         new Shared.ApiHandler(Routes.templateChat, HttpMethods.Get, Implementor.TemplateChat),
         new Shared.ApiHandler(Routes.userCreate, HttpMethods.Post, Implementor.UserCreate),
         new Shared.ApiHandler(Routes.userLogin, HttpMethods.Post, Implementor.UserLogin),
-        new Shared.ApiHandler(Routes.contactCreate, HttpMethods.Post, Implementor.ContactCreate),
-        new Shared.ApiHandler(Routes.contactRead, HttpMethods.Get, Implementor.ContactRead),
+        //new Shared.ApiHandler(Routes.contactCreate, HttpMethods.Post, Implementor.ContactCreate),
+        //new Shared.ApiHandler(Routes.contactRead, HttpMethods.Get, Implementor.ContactRead),
         new Shared.ApiHandler(Routes.chatSend, HttpMethods.Post, Implementor.ChatSend),
         new Shared.ApiHandler(Routes.chatReceive, HttpMethods.Get, Implementor.ChatReceive)
     };
@@ -21,10 +23,12 @@ public static partial class ApiServer
     {
 
         var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddCors();
+
         wapp = builder.Build();
         wapp.Urls.Add("http://0.0.0.0:5000");
 
-        wapp.UseCors( builder => builder.AllowAnyOrigin()
+        wapp.UseCors(builder => builder.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader()
         );

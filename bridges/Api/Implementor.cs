@@ -15,6 +15,15 @@ public static partial class ApiServer
             return "pong";
         }
 
+        public static string TemplateUser()
+        {
+            return JsonSerializer.Serialize(UserLogic.Template());
+        }
+        public static string TemplateChat()
+        {
+            return JsonSerializer.Serialize(ChatLogic.Template());
+        }
+
         public static string UserCreate([FromBody] UserForm uf)
         {
             User u = new User(uf.Password, uf.Interests);

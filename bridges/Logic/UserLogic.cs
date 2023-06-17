@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using Bridges.Shared;
-using Bridges.Shared.Forms;
 using Bridges.Shared.Entities;
 using Bridges.Databases;
 
@@ -8,6 +8,17 @@ namespace Bridges.Logic
 {
     static class UserLogic
     {
+        public static UserDS Template()
+        {
+            var ds = new UserDS();
+            var user = new User();
+            var list = new List<Interest>();
+            list.Add(new Interest("System Administration", Importance.important));
+            user.Password = "admin";
+            user.Interests = list.ToArray();
+            ds.Add("admin", user);
+            return ds;
+        }
         public static Result<bool> CreateUser(string name, User u)
         {
             if (name.Length < 1 || name.Contains(" "))

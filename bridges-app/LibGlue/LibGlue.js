@@ -1,11 +1,14 @@
 import axios from 'axios';
 export const baseURL = "http://145.220.74.171:5000";
 
+// This store contains all session state
 export var GlueStore = {
     User: String,
     Password: String,
     Cards: Array,
-    CardsLoaded: Boolean
+    CardsLoaded: Boolean,
+    Messages: Array,
+    MessagesLatest: Boolean
 };
 
 export class AuthHeader {
@@ -16,9 +19,18 @@ export class AuthHeader {
 }
 
 export class MessageForm {
-    constructor(hdr, tu) {
+    constructor(hdr, tu, su, mc) {
         this.Header = hdr;
         this.TargetUser = tu;
+        this.SourceUser = su;
+        this.MessageContent = mc;
+    }
+}
+
+export class StatusForm {
+    constructor(code, message) {
+        this.Code = code;
+        this.Message = message;
     }
 }
 

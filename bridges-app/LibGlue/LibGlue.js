@@ -34,6 +34,23 @@ export class StatusForm {
     }
 }
 
+export function PushChat(mesg, targetUser) {
+    const mf = new MessageForm(new AuthHeader(GlueStore.User, GlueStore.Password), targetUser, GlueStore.User, mesg);
+    const headers = {
+        'Content-Type': 'application/json'
+      }
+        const url = baseURL + "/chat/send";
+        const body = JSON.stringify(mf);
+    
+        axios.post(url, body, {"headers" : headers})
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+}
+
 export function PullChats() {
     const headers = {
         'Content-Type': 'application/json'

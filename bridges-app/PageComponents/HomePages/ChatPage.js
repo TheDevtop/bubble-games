@@ -4,11 +4,20 @@ import {View, Text, Image, ScrollView, TouchableOpacity, TextInput} from "react-
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import * as Glue from "../../LibGlue/LibGlue";
 import {Ionicons} from "@expo/vector-icons";
 
 export default function ChatPage({route}) {
     const {chat} = route.params;
     const navigation = useNavigation();
+
+    const [newMesg, setNewMesg] = useState('');
+
+    function sendMessage() {
+        console.log(newMesg);
+        Glue.PushChat(newMesg, "thijs");
+    }
+
     const messages = [
         {
             id: 1,
@@ -111,14 +120,16 @@ export default function ChatPage({route}) {
 
             <View style={styles.searchContainer}>
                 <TextInput
+                    onChangeText={newMesg => setNewMesg(newMesg)}
                     style={styles.searchInput}
-                    placeholder="Search"
+                    placeholder="Message"
                 />
                 <Ionicons
-                    name="ios-search"
+                    name="ios-send"
                     size={20}
                     color="grey"
                     style={styles.searchIcon}
+                    onPress={sendMessage}
                 />
             </View>
         </View>

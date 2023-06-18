@@ -83,6 +83,7 @@ static class ChatLogic
                 var queue = new Queue<Message>();
                 ChatDB.DataStore.Add(targetUser, queue);
             }
+            result.Value = new List<Message>().ToArray();
             return result;
         }
         var msgList = new List<Message>();

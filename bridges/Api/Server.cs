@@ -13,10 +13,8 @@ public static partial class ApiServer
          new Shared.ApiHandler(Routes.templateChat, HttpMethods.Get, Implementor.TemplateChat),
         new Shared.ApiHandler(Routes.userCreate, HttpMethods.Post, Implementor.UserCreate),
         new Shared.ApiHandler(Routes.userLogin, HttpMethods.Post, Implementor.UserLogin),
-        //new Shared.ApiHandler(Routes.contactCreate, HttpMethods.Post, Implementor.ContactCreate),
-        //new Shared.ApiHandler(Routes.contactRead, HttpMethods.Get, Implementor.ContactRead),
         new Shared.ApiHandler(Routes.chatSend, HttpMethods.Post, Implementor.ChatSend),
-        new Shared.ApiHandler(Routes.chatReceive, HttpMethods.Get, Implementor.ChatReceive)
+        new Shared.ApiHandler(Routes.chatReceive, HttpMethods.Post, Implementor.ChatReceive)
     };
 
     public static void Start(string[] args)

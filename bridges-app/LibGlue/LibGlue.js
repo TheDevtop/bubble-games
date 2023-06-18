@@ -34,6 +34,28 @@ export class StatusForm {
     }
 }
 
+export function PullChats() {
+    const headers = {
+        'Content-Type': 'application/json'
+      }
+        const url = baseURL + "/chat/receive";
+        const body = JSON.stringify(new Glue.AuthHeader(GlueStore.User, GlueStore.Password));
+    
+        axios.post(url, body, {"headers" : headers})
+          .then(function (response) {
+            const rf = response.data;
+            console.log(rf);
+            if (rf.Status.Code == 0) {
+               GlueStore.Messages = rf.Messages;
+               GlueStore.MessagesLatest = true;
+               return;
+            }
+          })
+          .catch(function (error) {
+            console.log(error)
+          });
+}
+
 export function PullQuotes(n) {
     var quotes = new Array();
     axios.get("https://type.fit/api/quotes", { withCredentials: false}).then(function(response) {

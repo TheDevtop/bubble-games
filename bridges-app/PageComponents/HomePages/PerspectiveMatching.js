@@ -2,8 +2,12 @@
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import * as Glue from "../../LibGlue/LibGlue";
 
-export default function PerspectiveMatching({navigation}) { //putting {{navigtion might work}}
+export default function PerspectiveMatching({navigation}) {
+
+  //  console.warn('Need to pull latest chats!');
+  //  Glue.PullChats();
 
     // Dummy data
     const chats = [
@@ -64,10 +68,10 @@ export default function PerspectiveMatching({navigation}) { //putting {{navigtio
             <Text style={styles.subTitle}>This is who we matched you with!</Text>
 
             <View style={styles.chatContainer}>
-                {chats.length > 0 ? (
+                {Glue.GlueStore.Messages.length > 0 ? (
                     <ScrollView>
-                        {chats.map((chat) => (
-                            <TouchableOpacity key={chat.id} style={styles.chat} onPress={() => navigateToChatPage(chat)}>
+                        {Glue.GlueStore.Messages.map((chat) => (
+                            <TouchableOpacity style={styles.chat} onPress={() => navigateToChatPage(chat)}>
                                 <Image style={styles.image} source={{uri: chat.image}} />
                                 <View style={styles.chatContent}>
                                     <Text style={styles.chatTitle}>{chat.title}</Text>

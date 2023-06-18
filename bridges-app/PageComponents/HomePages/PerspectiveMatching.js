@@ -70,7 +70,7 @@ export default function PerspectiveMatching({navigation}) {
             <View style={styles.chatContainer}>
                 {Glue.GlueStore.Messages.length > 0 ? (
                     <ScrollView>
-                        {Glue.GlueStore.Messages.map((chat) => (
+                        {chats.map((chat) => (
                             <TouchableOpacity style={styles.chat} onPress={() => navigateToChatPage(chat)}>
                                 <Image style={styles.image} source={{uri: chat.image}} />
                                 <View style={styles.chatContent}>

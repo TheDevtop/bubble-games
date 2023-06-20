@@ -3,7 +3,6 @@ namespace Bridges.Shared.Forms;
 public record MessageForm : Entities.Message
 {
     public AuthHeader Header { get; set; }
-    public string TargetUser { get; set; }
 }
 
 public record MessageList

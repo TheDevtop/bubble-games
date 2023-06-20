@@ -16,14 +16,14 @@ static class ChatLogic
 
         adminQueue.Enqueue(new Message
         {
-            MessageContent = "Lorem ipsum",
-            SourceUser = "foobar"
+            Content = "Lorem ipsum",
+            From = "foobar"
         });
 
         foobarQueue.Enqueue(new Message
         {
-            MessageContent = "Hello, world!",
-            SourceUser = "admin"
+            Content = "Hello, world!",
+            From = "admin"
         });
 
         cds.Add("admin", adminQueue);
@@ -31,19 +31,26 @@ static class ChatLogic
 
         return cds;
     }
-    public static Result<bool> SendMessage(string targetUser, Message msg)
+    public static Result<bool> SendMessage(Message msg)
     {
+        // Check if the person whom sends the message is registered.
         var result = new Result<bool>();
-        if (!UserLogic.IsRegistered(targetUser))
+        if (!UserLogic.IsRegistered(msg.From))
+        {
+            result.Error = new Exception(LogicErrors.errNoUser);
+            return result;
+        }
+        // Check if the person whom gets the message is registered.
+        if (!UserLogic.IsRegistered(msg.To))
         {
             result.Error = new Exception(LogicErrors.errNoUser);
             return result;
         }
 
         // Check for the target user
-        if (ChatDB.DataStore.ContainsKey(targetUser))
+        if (ChatDB.DataStore.ContainsKey(msg.To))
         {
-            ChatDB.DataStore[targetUser].Enqueue(msg);
+            ChatDB.DataStore[msg.To].Enqueue(msg);
         }
         else
         {
@@ -51,14 +58,14 @@ static class ChatLogic
             {
                 var queue = new Queue<Message>();
                 queue.Enqueue(msg);
-                ChatDB.DataStore.Add(targetUser, queue);
+                ChatDB.DataStore.Add(msg.To, queue);
             }
         }
 
         // Do the same for the source user
-        if (ChatDB.DataStore.ContainsKey(msg.SourceUser))
+        if (ChatDB.DataStore.ContainsKey(msg.From))
         {
-            ChatDB.DataStore[msg.SourceUser].Enqueue(msg);
+            ChatDB.DataStore[msg.From].Enqueue(msg);
         }
         else
         {
@@ -66,10 +73,9 @@ static class ChatLogic
             {
                 var queue = new Queue<Message>();
                 queue.Enqueue(msg);
-                ChatDB.DataStore.Add(msg.SourceUser, queue);
+                ChatDB.DataStore.Add(msg.From, queue);
             }
         }
-
         return result;
     }
 

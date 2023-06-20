@@ -3,6 +3,7 @@ namespace Bridges.Shared.Entities;
 
 public record Message
 {
-    public string SourceUser { get; set; }
-    public string MessageContent { get; set; }
+    public string From { get; set; }
+    public string To { get; set; }
+    public string Content { get; set; }
 }

@@ -82,11 +82,12 @@ public static partial class ApiServer
             {
                 return JsonSerializer.Serialize(new StatusForm(1, loginResult.Error.Message));
             }
-            var msg = new Message();
-            msg.SourceUser = mf.SourceUser;
-            msg.MessageContent = mf.MessageContent;
 
-            var sendResult = ChatLogic.SendMessage(mf.TargetUser, msg);
+            var msg = new Message();
+            msg.From = mf.From;
+            msg.Content = mf.Content;
+
+            var sendResult = ChatLogic.SendMessage(msg);
             if (sendResult.Error != null)
             {
                 return JsonSerializer.Serialize(new StatusForm(2, sendResult.Error.Message));

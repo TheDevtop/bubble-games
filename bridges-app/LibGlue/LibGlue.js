@@ -22,9 +22,9 @@ export class AuthHeader {
 export class MessageForm {
   constructor(hdr, tu, su, mc) {
     this.Header = hdr;
-    this.TargetUser = tu;
-    this.SourceUser = su;
-    this.MessageContent = mc;
+    this.From = su;
+    this.To = tu;
+    this.Content = mc;
   }
 }
 
@@ -33,6 +33,15 @@ export class StatusForm {
     this.Code = code;
     this.Message = message;
   }
+}
+
+export function ProtoMessage() {
+  var m = {
+    From: "",
+    To: "",
+    Content: ""
+  };
+  return m;
 }
 
 export function PushChat(mesg, targetUser) {
@@ -44,6 +53,7 @@ export function PushChat(mesg, targetUser) {
   const url = baseURL + "/chat/send";
   const body = JSON.stringify(mf);
 
+  console.log(body);
   axios.post(url, body, { "headers": headers })
     .then(function (response) {
       console.log(response.data);

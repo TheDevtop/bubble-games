@@ -17,13 +17,15 @@ static class ChatLogic
         adminQueue.Enqueue(new Message
         {
             Content = "Lorem ipsum",
-            From = "foobar"
+            From = "admin",
+            To = "foobar"
         });
 
         foobarQueue.Enqueue(new Message
         {
             Content = "Hello, world!",
-            From = "admin"
+            From = "foobar",
+            To = "admin"
         });
 
         cds.Add("admin", adminQueue);

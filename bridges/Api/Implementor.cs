@@ -85,6 +85,7 @@ public static partial class ApiServer
 
             var msg = new Message();
             msg.From = mf.From;
+            msg.To = mf.To;
             msg.Content = mf.Content;
 
             var sendResult = ChatLogic.SendMessage(msg);

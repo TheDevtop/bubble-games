@@ -21,11 +21,22 @@ public static partial class ApiServer
     {
 
         var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddCors();
+
+        // The old way
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(policy =>
+            {
+                policy.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
+        });
 
         wapp = builder.Build();
         wapp.Urls.Add("http://0.0.0.0:5000");
 
+        // The new way
         wapp.UseCors(builder => builder.AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader()

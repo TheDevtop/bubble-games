@@ -1,8 +1,8 @@
 ﻿import React, { useState, useEffect } from "react";
-import {View, Text, StyleSheet, Animated, PanResponder, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, Animated, PanResponder, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { CheckBox } from "react-native-elements";
-import {Ionicons} from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import * as Glue from "../../LibGlue/LibGlue";
 
 export default function EmpathyCardsPage({ navigation }) {
@@ -11,7 +11,7 @@ export default function EmpathyCardsPage({ navigation }) {
     const [pan] = useState(new Animated.ValueXY());
     const [opacity] = useState(new Animated.Value(1));
     const [selectedCardIndex, setSelectedCardIndex] = useState(0);
-    
+
     useEffect(() => {
         pan.setValue({ x: 0, y: 0 });
         opacity.setValue(1);
@@ -68,7 +68,7 @@ export default function EmpathyCardsPage({ navigation }) {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Icon name="arrow-back-outline" size={30} color="#000" style={styles.arrow}/>
+                    <Icon name="arrow-back-outline" size={30} color="#000" style={styles.arrow} />
                 </TouchableOpacity>
                 <Text style={styles.title}>EMPATHY CARDS</Text>
             </View>
@@ -123,10 +123,10 @@ const styles = StyleSheet.create({
     header: {
         marginTop: 50,
         marginBottom: 20,
-        flexDirection: "row", 
+        flexDirection: "row",
         alignItems: "center",
     },
-    arrow:{
+    arrow: {
         right: 50
     },
     title: {

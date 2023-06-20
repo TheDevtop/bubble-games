@@ -1,21 +1,20 @@
 ﻿import * as React from "react";
-import  { useState } from 'react';
-import {View, Text, Image, ScrollView, TouchableOpacity, TextInput} from "react-native"
-import {StyleSheet} from 'react-native';
+import { useState } from 'react';
+import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "react-native"
+import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import * as Glue from "../../LibGlue/LibGlue";
-import {Ionicons} from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
-export default function ChatPage({route}) {
-    const {chat} = route.params;
+export default function ChatPage({ route }) {
+    const { chat } = route.params;
     const navigation = useNavigation();
 
     const [newMesg, setNewMesg] = useState('');
 
     function sendMessage() {
-        console.log(newMesg);
-        Glue.PushChat(newMesg, "thijs");
+        Glue.PushChat(newMesg, chat.shortName);
     }
 
     const messages = [
@@ -74,12 +73,12 @@ export default function ChatPage({route}) {
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Icon name="arrow-back-outline" size={30} color="#000" style={styles.arrow}/>
+                    <Icon name="arrow-back-outline" size={30} color="#000" style={styles.arrow} />
                 </TouchableOpacity>
                 <Text style={styles.title}>{chat.title}</Text>
-                <Icon name="ellipsis-vertical" size={30} color="#000" style={styles.burger}/>
+                <Icon name="ellipsis-vertical" size={30} color="#000" style={styles.burger} />
             </View>
-            <View style={styles.underline}/>
+            <View style={styles.underline} />
 
             <Text style={styles.subtitle}>Start a conversation with one of the suggested questions!</Text>
 
@@ -89,7 +88,7 @@ export default function ChatPage({route}) {
             <View style={styles.questionContainer}>
 
                 <TouchableOpacity>
-                     <Text style={styles.question1}>Something question?</Text>
+                    <Text style={styles.question1}>Something question?</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity>
@@ -98,14 +97,14 @@ export default function ChatPage({route}) {
             </View>
 
             <TouchableOpacity>
-                    <Text style={styles.bigQuestion}>Something question?</Text>
+                <Text style={styles.bigQuestion}>Something question?</Text>
             </TouchableOpacity>
 
             <ScrollView style={styles.chatContainer}>
                 {messages.map((message) => (
                     <View key={message.id}
-                          style={message.sourceUser === chat.title ? styles.messageRight : styles.messageLeft}>
-                        <Image style={styles.messageImage} source={{uri: message.image}}/>
+                        style={message.sourceUser === chat.title ? styles.messageRight : styles.messageLeft}>
+                        <Image style={styles.messageImage} source={{ uri: message.image }} />
                         <View
                             style={message.sourceUser === chat.title ? styles.messageContentRight : styles.messageContentLeft}>
                             <Text style={styles.messageUser}>{message.sourceUser}</Text>
@@ -249,7 +248,7 @@ const styles = StyleSheet.create({
     messageLeft: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        alignItems: 'flex-start', 
+        alignItems: 'flex-start',
         padding: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#EEE',
@@ -257,7 +256,7 @@ const styles = StyleSheet.create({
     messageRight: {
         flexDirection: 'row-reverse',
         justifyContent: 'flex-end',
-        alignItems: 'flex-start', 
+        alignItems: 'flex-start',
         padding: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#EEE',

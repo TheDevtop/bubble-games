@@ -16,7 +16,7 @@ export default function WelcomePage() {
             <Text style={styles.subtitle}>Meet, Connect, Understand</Text>
             <TouchableOpacity style={styles.button} onPress={handleSignUpPress}>
                 <Text style={styles.buttonText}>Continue</Text>
-                <Ionicons name="arrow-forward" size={30} color="black" style={styles.icon}/>
+                <Ionicons name="arrow-forward" size={30} color="black" style={styles.icon} />
             </TouchableOpacity>
         </View>
     );
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         color: "#707070",
         marginRight: 8,
     },
-    icon:{
+    icon: {
         color: "#616669"
     }
 });

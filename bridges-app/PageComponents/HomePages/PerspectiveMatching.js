@@ -1,65 +1,42 @@
-﻿import * as React from "react";
+﻿import React, {useState, useEffect} from "react";
+import * as Glue from "../../LibGlue/LibGlue";
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import * as Glue from "../../LibGlue/LibGlue";
 
 export default function PerspectiveMatching({navigation}) {
 
-  //  console.warn('Need to pull latest chats!');
-  //  Glue.PullChats();
+    const [chatList, setChatList] = useState([]);
+
+    const onLoad = () => {
+        setChatList(Glue.PullChats());
+    }
+
+
+    useEffect(() => {
+        onLoad();
+    }, []);
 
     // Dummy data
     const chats = [
         {
             id: 1,
             image: 'https://via.placeholder.com/150',
-            title: 'User name',
-            description: 'Something about your common interest!',
+            title: 'Johnny B.Goode',
+            shortName: 'jbgoode'
         },
         {
             id: 2,
             image: 'https://via.placeholder.com/150',
-            title: 'User name',
-            description: 'Something about your common interest!',
-        },
-        {
-            id: 3,
-            image: 'https://via.placeholder.com/150',
-            title: 'User name',
-            description: 'Something about your common interest!',
-        },
-        {
-            id: 4,
-            image: 'https://via.placeholder.com/150',
-            title: 'User name',
-            description: 'Something about your common interest!',
-        },
-        {
-            id: 5,
-            image: 'https://via.placeholder.com/150',
-            title: 'User name',
-            description: 'Something about your common interest!',
-        },
-        {
-            id: 6,
-            image: 'https://via.placeholder.com/150',
-            title: 'User name',
-            description: 'Something about your common interest!',
-        },
-        {
-            id: 7,
-            image: 'https://via.placeholder.com/150',
-            title: 'User name',
-            description: 'Something about your common interest!',
-        },
-        // ...add more chats
+            title: 'Marianne',
+            shortName: 'marianne'
+        }
     ];
     
     const navigateToChatPage = (chat) => {
         navigation.navigate('ChatPage', { chat });
     };
-    
+
     return (
         <View style={styles.container}>
             <Text style={styles.bridges}>Bridges</Text>
@@ -68,14 +45,13 @@ export default function PerspectiveMatching({navigation}) {
             <Text style={styles.subTitle}>This is who we matched you with!</Text>
 
             <View style={styles.chatContainer}>
-                {Glue.GlueStore.Messages.length > 0 ? (
+                {chats.length > 0 ? (
                     <ScrollView>
                         {chats.map((chat) => (
                             <TouchableOpacity style={styles.chat} onPress={() => navigateToChatPage(chat)}>
                                 <Image style={styles.image} source={{uri: chat.image}} />
                                 <View style={styles.chatContent}>
                                     <Text style={styles.chatTitle}>{chat.title}</Text>
-                                    <Text style={styles.chatDescription}>{chat.description}</Text>
                                 </View>
                                 <Ionicons name="arrow-forward" size={24} color="black" />
                             </TouchableOpacity>

@@ -30,7 +30,7 @@ export default function HomePage({ navigation }) {
                             <Text style={styles.cardTitle}>Empathy Cards</Text>
                             <Text style={styles.cardDescription}>Pull your empathy card of the day</Text>
                         </View>
-                        <Ionicons name="arrow-forward" size={30} color="black" style={{right: 10}}/>
+                        <Ionicons name="arrow-forward" size={30} color="black" style={{ right: 10 }} />
                     </View>
                 </View>
             </TouchableWithoutFeedback>
@@ -46,7 +46,7 @@ export default function HomePage({ navigation }) {
                             <Text style={styles.cardTitle}>Empathy Action</Text>
                             <Text style={styles.cardDescription}>Pull your empathy card of the day</Text>
                         </View>
-                        <Ionicons name="arrow-forward" size={30} color="black"                        style={{right: 10}}/>
+                        <Ionicons name="arrow-forward" size={30} color="black" style={{ right: 10 }} />
                     </View>
                 </View>
             </TouchableWithoutFeedback>
@@ -62,7 +62,7 @@ export default function HomePage({ navigation }) {
                             <Text style={styles.cardTitle}>Perspective Matching</Text>
                             <Text style={styles.cardDescription}>Start a chat with one of your matches</Text>
                         </View>
-                        <Ionicons name="arrow-forward" size={30} color="black" style={{right: 10}}/>
+                        <Ionicons name="arrow-forward" size={30} color="black" style={{ right: 10 }} />
                     </View>
                 </View>
             </TouchableWithoutFeedback>

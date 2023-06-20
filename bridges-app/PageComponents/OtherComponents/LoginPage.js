@@ -1,4 +1,4 @@
-﻿import React, {useState} from "react";
+﻿import React, { useState, useEffect } from "react";
 import * as Glue from "../../LibGlue/LibGlue";
 import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -12,23 +12,23 @@ export default function LoginPage({ navigation }) {
     function handleLogin() {
         const headers = {
             'Content-Type': 'application/json'
-          }
-            const url = Glue.baseURL + "/user/login";
-            const body = JSON.stringify(new Glue.AuthHeader(name, pass));
-        
-            axios.post(url, body, {"headers" : headers})
-              .then(function (response) {
+        }
+        const url = Glue.baseURL + "/user/login";
+        const body = JSON.stringify(new Glue.AuthHeader(name, pass));
+
+        axios.post(url, body, { "headers": headers })
+            .then(function (response) {
                 const rf = response.data;
                 console.log(rf);
                 if (rf.Code == 0) {
                     Glue.GlueStore.User = name;
                     Glue.GlueStore.Password = pass;
-                  navigation.navigate("Main");
+                    navigation.navigate("Main");
                 }
-              })
-              .catch(function (error) {
+            })
+            .catch(function (error) {
                 console.log(error)
-              });
+            });
     }
 
     const handleSignUpPress = () => {
@@ -156,5 +156,5 @@ const styles = StyleSheet.create({
     },
     socialIcon: {
         marginHorizontal: 15,
-        },
+    },
 });

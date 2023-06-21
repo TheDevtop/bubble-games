@@ -19,15 +19,18 @@ export default function LoginPage({ navigation }) {
         axios.post(url, body, { "headers": headers })
             .then(function (response) {
                 const rf = response.data;
-                console.log(rf);
                 if (rf.Code == 0) {
                     Glue.GlueStore.User = name;
                     Glue.GlueStore.Password = pass;
+                    console.log("Login correct", rf);
                     navigation.navigate("Main");
+                } else {
+                    console.log("Login incorrect", rf);
                 }
+                
             })
             .catch(function (error) {
-                console.log(error)
+                console.error(error);
             });
     }
 

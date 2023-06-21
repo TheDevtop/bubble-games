@@ -12,6 +12,7 @@ export default function HomePage({ navigation }) {
     if (Glue.GlueStore.CardsLoaded != true) {
         Glue.GlueStore.Cards = Glue.PullQuotes(4);
         Glue.GlueStore.CardsLoaded = true;
+        console.log("Loaded cards");
     }
 
     return (

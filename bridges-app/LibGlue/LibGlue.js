@@ -62,27 +62,24 @@ export function PushChat(mesg, targetUser) {
     });
 }
 
-export function PullChats() {
+export async function PullChats() {
   const headers = {
     'Content-Type': 'application/json'
   }
   const url = baseURL + "/chat/receive";
   const body = JSON.stringify(new AuthHeader(GlueStore.User, GlueStore.Password));
+  const resp = await axios.post(url, body, { "headers": headers });
+  const rf = resp.data;
 
-  axios.post(url, body, { "headers": headers })
-    .then(function (response) {
-      const rf = response.data;
-      if (rf.Status.Code == 0) {
-        GlueStore.Messages = rf.Messages;
-        GlueStore.MessagesLatest = true;
+  if (rf.Status.Code == 0) {
+    GlueStore.Messages = rf.Messages;
+    GlueStore.MessagesLatest = true;
 
-        console.log(GlueStore.Messages);
-        return;
-      }
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+    console.log("Loaded chat messages.");
+  } else {
+    console.warn("Could not load chat messages!");
+  }
+  return;
 }
 
 export function PullQuotes(n) {

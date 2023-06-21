@@ -26,7 +26,6 @@ export default function PerspectiveMatching({navigation}) {
         navigation.navigate('ChatPage', { chat });
     };
 
-    console.trace(Glue.GlueStore.Messages);
     return (
         <View style={styles.container}>
             <Text style={styles.bridges}>Bridges</Text>

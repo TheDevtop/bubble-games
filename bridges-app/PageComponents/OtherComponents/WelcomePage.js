@@ -10,6 +10,12 @@ export default function WelcomePage() {
         navigation.navigate("SignUp");
     };
 
+    const mesg = () => {
+        console.clear();
+        console.log("Welcome to Bridges!");
+    }
+
+    mesg()
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Bridges</Text>

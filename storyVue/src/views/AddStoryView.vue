@@ -23,10 +23,14 @@
 
         <label>Upload audio with the story</label>
         
-        <label for="audio" id="audioUpload">
+        <label v-if="audioFileName"  for="audio" id="audioUpload">
+ {{ audioFileName }}
+        </label>
+        <label v-else for="audio" id="audioUpload">
           Choose file to upload your audio   
         </label>
-        <input type="file" id="audio" name="audio" accept="audio/*">
+        <input type="file" id="audio" name="audio" accept="audio/*" @change="handleAudioUpload">
+
         <br>
       </div>
       
@@ -61,7 +65,9 @@ export default {
   story.value.avatarData = data;
   console.log(story)
 };
-    
+const audioFile = ref(null);
+const audioFileName = ref('');
+
      const { storyTypes, error2, load: loadTypes } = getStoryTypes();
     loadTypes();
 
@@ -87,6 +93,11 @@ export default {
   story.value.id = id;
 }
 
+const handleAudioUpload = (event) => {
+   audioFile.value = event.target.files[0];
+   audioFileName.value = event.target.files[0].name;
+   console.log(audioFileName.value)
+};
 
     checkAndAssignID();
 watch(showBlackScreen, (newVal, oldVal) => {
@@ -119,6 +130,24 @@ function showScreen() {
       e.preventDefault();
       console.log('submitted');
       console.log(story);
+      if (audioFile.value) {
+   const formData = new FormData();
+   formData.append('file', audioFile.value);
+/* edit the urls*/
+   fetch(`http://145.220.74.171:8080/media/post?=74791102`, {
+      method: 'POST',
+      body: formData
+   })
+   .then(response => {
+      if (!response.ok) {
+         throw new Error('Network response was not ok');
+      }
+      console.log('Audio file uploaded successfully');
+   })
+   .catch(error => {
+      console.error('There was a problem with the fetch operation: ', error);
+   });
+}
 
       // Get the current date and time
       const currentDateTime = new Date().toISOString().replace('T', ' ').slice(0, 19);
@@ -148,7 +177,7 @@ function showScreen() {
         });
     };
     
-    return { story, storyTypes, postStoryData,showBlackScreen,handleAvatarData }
+    return { story, storyTypes, postStoryData,showBlackScreen,handleAvatarData, handleAudioUpload, audioFile,audioFileName  }
   }
 }
 </script>

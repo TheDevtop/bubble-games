@@ -6,17 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function PerspectiveMatching({navigation}) {
 
-    const [chatList, setChatList] = useState([]);
-
-    const onLoad = () => {
-        setChatList(Glue.PullChats());
-    }
-
-
-    useEffect(() => {
-        onLoad();
-    }, []);
-
     // Dummy data
     const chats = [
         {
@@ -37,6 +26,7 @@ export default function PerspectiveMatching({navigation}) {
         navigation.navigate('ChatPage', { chat });
     };
 
+    console.trace(Glue.GlueStore.Messages);
     return (
         <View style={styles.container}>
             <Text style={styles.bridges}>Bridges</Text>

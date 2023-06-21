@@ -1,4 +1,3 @@
-import { faL } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 export const baseURL = "http://145.220.74.171:5000";
 
@@ -70,20 +69,20 @@ export function PullChats() {
   const url = baseURL + "/chat/receive";
   const body = JSON.stringify(new AuthHeader(GlueStore.User, GlueStore.Password));
 
-  var messages = [];
-
   axios.post(url, body, { "headers": headers })
     .then(function (response) {
       const rf = response.data;
       if (rf.Status.Code == 0) {
         GlueStore.Messages = rf.Messages;
+        GlueStore.MessagesLatest = true;
+
+        console.log(GlueStore.Messages);
+        return;
       }
     })
     .catch(function (error) {
       console.error(error);
     });
-
-  return messages;
 }
 
 export function PullQuotes(n) {

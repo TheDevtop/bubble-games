@@ -16,10 +16,12 @@ export default function ChatPage({ route }) {
     }
 
     const onLoad = () => {
+        Glue.PullChats();
+        console.log(Glue.GlueStore.Messages);
+       
         const x = Glue.GlueStore.Messages.filter((msg) => {
             return msg.To == chat.shortName;
         });
-        console.log(x);
     }
 
     React.useEffect(() => {
@@ -43,6 +45,7 @@ export default function ChatPage({ route }) {
         },
     ];
 
+    console.trace(Glue.GlueStore.Messages);
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>

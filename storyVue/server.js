@@ -7,6 +7,10 @@ const express = require('express')
 const fs = require('fs');
 const app = express()
 const port = 8080
+const mediaBasePath = "/media/";
+const mpegExt = ".mp3";
+
+// Server section
 
 // Custom route handler for POST requests to /stories/:id
 server.use(jsonServer.bodyParser);
@@ -26,14 +30,39 @@ server.use((req, res, next) => {
 server.use(middlewares);
 server.use(router);
 
-// This is so bad, its almost unbelievable.
+server.listen(3000, () => {
+  console.log('JSON Server is running on port 3000');
+});
 
+// App section
 app.use('/whatavue', express.static('dist'));
+
+app.post('/media/post', (req, res) => {
+  const fpath = mediaBasePath+req.query.id+mpegExt;
+  console.log('Writing: ', fpath);
+
+  var fd = fs.createWriteStream(fpath);
+  req.pipe(fd);
+  res.status(200).send();
+});
+
+
+app.post('/media/delete', (req, res) => {
+  const fpath = mediaBasePath+req.query.id+mpegExt;
+  console.log('Removing: ', fpath);
+  fs.unlinkSync(fpath);
+  res.status(200).send();
+});
+
+app.get('/media/get', (req, res) => {
+  const fpath = mediaBasePath+req.query.id+mpegExt;
+  console.log('Reading: ', fpath);
+
+  var fd = fs.createReadStream(fpath);
+
+  fd.pipe(res);
+});
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`)
 })
-
-server.listen(3000, () => {
-  console.log('JSON Server is running on port 3000');
-});

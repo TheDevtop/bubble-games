@@ -10,4 +10,6 @@ RUN npm install
 EXPOSE 8080
 EXPOSE 3000
 
+VOLUME /media
+
 CMD [ "npm", "run", "prod" ]

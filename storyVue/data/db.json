@@ -109,39 +109,6 @@
         "skinId": 1,
         "hairColorId": 1
       }
-    },
-    {
-      "id": 7676502356042971,
-      "title": "hi",
-      "storyType": 3,
-      "dateTime": "2023-06-01 02:10:15",
-      "avatarData": {
-        "hairId": 13,
-        "skinId": 2,
-        "hairColorId": 3
-      }
-    },
-    {
-      "id": 8138802403048103,
-      "title": "ohobhn",
-      "storyType": 6,
-      "dateTime": "2023-06-01 02:23:39",
-      "avatarData": {
-        "hairId": 1,
-        "skinId": 3,
-        "hairColorId": 3
-      }
-    },
-    {
-      "id": 7262093539985887,
-      "title": "LMAO",
-      "storyType": 3,
-      "dateTime": "2023-06-12 11:40:00",
-      "avatarData": {
-        "hairId": 8,
-        "skinId": 1,
-        "hairColorId": 1
-      }
     }
   ],
   "storyTypes": [

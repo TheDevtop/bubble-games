@@ -20,6 +20,7 @@ export default function ChatPage({ route }) {
             const x = Glue.GlueStore.Messages.filter((msg) => {
                 return msg.To == chat.shortName;
             });
+            Glue.GlueStore.Messages = x;
             console.log(Glue.GlueStore.Messages);
         });
     }
@@ -28,23 +29,6 @@ export default function ChatPage({ route }) {
         console.clear();
         onLoad();
     }, []);
-
-    const messages = [
-        {
-            id: 1,
-            targetUser: 'User name',
-            sourceUser: 'User 1',
-            messageContent: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            image: chat.image,
-        },
-        {
-            id: 2,
-            targetUser: 'User 1',
-            sourceUser: 'User name',
-            messageContent: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            image: chat.image,
-        },
-    ];
 
     return (
         <View style={styles.container}>
@@ -78,16 +62,16 @@ export default function ChatPage({ route }) {
             </TouchableOpacity>
 
             <ScrollView style={styles.chatContainer}>
-                {messages.map((message) => (
-                    <View key={message.id}
-                        style={message.sourceUser === chat.title ? styles.messageRight : styles.messageLeft}>
-                        <Image style={styles.messageImage} source={{ uri: message.image }} />
+                {Glue.GlueStore.Messages.map((message) => (
+                    <View
+                        style={message.To === chat.title ? styles.messageRight : styles.messageLeft}>
+                        <Image style={styles.messageImage} source={{ uri: chat.image }} />
                         <View
-                            style={message.sourceUser === chat.title ? styles.messageContentRight : styles.messageContentLeft}>
-                            <Text style={styles.messageUser}>{message.sourceUser}</Text>
+                            style={message.From === chat.title ? styles.messageContentRight : styles.messageContentLeft}>
+                            <Text style={styles.messageUser}>{message.From}</Text>
                             <View
-                                style={message.sourceUser === chat.title ? styles.messageOfRightUser : styles.messageOfLeftUser}>
-                                <Text style={styles.messageText}>{message.messageContent}</Text>
+                                style={message.From === chat.title ? styles.messageOfRightUser : styles.messageOfLeftUser}>
+                                <Text style={styles.messageText}>{message.Content}</Text>
                             </View>
                         </View>
                     </View>

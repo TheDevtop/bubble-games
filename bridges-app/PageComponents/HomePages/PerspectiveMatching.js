@@ -21,6 +21,17 @@ export default function PerspectiveMatching({navigation}) {
             shortName: 'marianne'
         }
     ];
+
+    const onLoad = () => {
+        Glue.PullChats().then(() => {
+            console.log(Glue.GlueStore.Messages);
+        });
+    }
+
+    React.useEffect(() => {
+        onLoad();
+    }, []);
+
     
     const navigateToChatPage = (chat) => {
         navigation.navigate('ChatPage', { chat });

@@ -135,7 +135,7 @@ function showScreen() {
    const formData = new FormData();
    formData.append('file', audioFile.value);
 /* edit the urls*/
-   fetch(`http://145.220.74.171:8080/media/post?=`+story.value.id, {
+   fetch(`http://145.220.74.171:8080/media/post?id=`+story.value.id, {
       method: 'POST',
       body: formData
    })

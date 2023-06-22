@@ -6,7 +6,16 @@
   * {
     box-sizing: border-box;
   }
-  
+  .eyes{    position: absolute;
+    z-index: 5;
+    top: 96px;
+    left: 210px;}
+    .mouth{
+      position: absolute;
+      left: 243px;
+      top: 238px;
+      z-index: 5;
+    }
   body {
     margin: 0;
     padding: 0;
@@ -24,6 +33,9 @@
   #popText{
     color: #9c9c9c;
     text-align: center;
+  }
+  #timeElapsed{
+    margin: 5%;
   }
   .toprow{
     display: flex;

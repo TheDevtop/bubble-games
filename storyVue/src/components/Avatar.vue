@@ -12,6 +12,8 @@
       >
         <img class="selectedSkin" :src="getSkinImageById(avatarData.skinId)" />
         <img class="selectedHair" :src="getHairImageById(avatarData.hairId)" />
+        <img class="eyes" src="../img/e1.png"/>
+        <img class="mouth" src="../img/m1.png"/>
       </div>
 
   </template>
@@ -97,12 +99,6 @@
   </script>
   
   <style scoped>
-  .selectedAvatar {
-    /* Add necessary styles for the selected avatar container */
-  }
-  
-  .selectedAvatar img {
-    /* Add necessary styles for the selected avatar images */
-  }
+
   </style>
   

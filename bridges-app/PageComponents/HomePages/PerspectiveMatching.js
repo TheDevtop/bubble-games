@@ -19,6 +19,18 @@ export default function PerspectiveMatching({navigation}) {
             image: 'https://via.placeholder.com/150',
             title: 'Marianne',
             shortName: 'marianne'
+        },
+        {
+            id: 3,
+            image: 'https://via.placeholder.com/150',
+            title: 'Julius',
+            shortName: 'julius'
+        },
+        {
+            id: 4,
+            image: 'https://via.placeholder.com/150',
+            title: 'Ines',
+            shortName: 'ines'
         }
     ];
 

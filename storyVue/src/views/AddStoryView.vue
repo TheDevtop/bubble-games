@@ -91,6 +91,7 @@ const audioFileName = ref('');
 
   // Once a unique ID is found, assign it to the story
   story.value.id = id;
+  console.log(id)
 }
 
 const handleAudioUpload = (event) => {
@@ -134,7 +135,7 @@ function showScreen() {
    const formData = new FormData();
    formData.append('file', audioFile.value);
 /* edit the urls*/
-   fetch(`http://145.220.74.171:8080/media/post?=74791102`, {
+   fetch(`http://145.220.74.171:8080/media/post?=`+story.value.id, {
       method: 'POST',
       body: formData
    })

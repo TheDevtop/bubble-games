@@ -1,23 +1,32 @@
 <template>
-    <div class="fadeScreenStorylet" :id="'fadeScreenStorylet-' + story.id" :style="{'--bgCol':bgColor}"></div>
+     <div class="fadeScreenStorylet" :id="'fadeScreenStorylet-' + story.id" :style="{'--bgCol':bgColor}"></div>
     <div v-if="colorBg">
     <div @click="showFade"  class="storylet"  :class="'storyType-' + story.storyType">
-    <div  >
-      <div id="storyletToprow"> <div id="avatarPic"><Avatar style="  position: relative;  left: -23px; top: 15px;" :avatar-data="story.avatarData"/></div>
-      <h2 >{{ story.title }}</h2></div> 
+   
+        <div  >
+            <div id="storyletToprow"> 
+            <div id="avatarPic"><Avatar style="  position: relative;  left: -16px; top: 15px;" :avatar-data="story.avatarData"/></div>
+      <div id="storyletDescStuff">
+      <h2 >{{ story.title }}</h2>
+      <p class="storyletDateTime">10 min</p> </div>
+    </div> 
      
-      <p class="storyletDateTime">{{ story.dateTime }}</p>
+     
     </div>
     
 </div>
 </div>
 <div v-else>
     <div  @click="showFade" class="storylet" :to="{name:'story', params:{id:story.id}}">
-    <div  >
-      <div id="storyletToprow"> <div id="avatarPic"><Avatar style="  position: relative;  left: -23px; top: 15px;" :avatar-data="story.avatarData"/></div>
-      <h2 >{{ story.title }}</h2></div> 
+        <div  >
+            <div id="storyletToprow"> 
+            <div id="avatarPic"><Avatar style="  position: relative;  left: -16px; top: 15px;" :avatar-data="story.avatarData"/></div>
+      <div id="storyletDescStuff">
+      <h2 >{{ story.title }}</h2>
+      <p class="storyletDateTime">10 min</p> </div>
+    </div> 
      
-      <p class="storyletDateTime">{{ story.dateTime }}</p>
+     
     </div>
     
 </div>

@@ -22,7 +22,7 @@
 <div id="current-time"></div>
   <svg id="playbackControls"  v-if="story && storyType" width="163" height="65" viewBox="0 0 163 65" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect x="24" y="44.5" width="24" height="24" transform="rotate(180 24 44.5)" fill="url(#pattern0)"/>
-<rect x="49" width="65" height="65" rx="32.5"  @click="playAudio" id="playBtnPlayerSvg" :class="'storyType-' + story.storyType"/>
+<rect x="49" width="65" height="65" rx="32.5"  @click="playPause" id="playBtnPlayerSvg" :class="'storyType-' + story.storyType"/>
 <rect x="74" y="21.5" width="5.45455" height="22" rx="1" fill="#181818"/>
 <rect x="83.5454" y="21.5" width="5.45455" height="22" rx="1" fill="#181818"/>
 <rect x="139" y="20.5" width="24" height="24" fill="url(#pattern1)"/>
@@ -71,17 +71,18 @@ if (audioSource.value) {
 
 const playPause=()=>{
 wavesurfer.playPause();
+console.log('playToggled')
 }  
 onMounted(()=>{
     // Initialize WaveSurfer instance
 
   
 
-    //audioSource.value = new Audio("https://i409587.hera.fhict.nl/audio/Voice-Over-Achtergrond.mp3");
+    audioSource.value = new Audio("https://i409587.hera.fhict.nl/audio/Voice-Over-Achtergrond.mp3");
   })
   const { load: loadStory, story, error: errorStory } = getSingleStory(props.id); // Pass the id prop to the getSingleStory function
   const { load: loadType, storyType, error: errorType } = getSingleType();
-  const { load: loadaudio, audio, error: errorAudio } = getAudio(74791102);
+  const { load: loadaudio, audio, error: errorAudio } = getAudio(props.id);
   let backgroundColor = sessionStorage.getItem('backgroundColor');
 console.log(backgroundColor, "bgcol")
 
@@ -109,7 +110,7 @@ setTimeout(() => {
 console.log('Loaded story:', story.value);
 // Once the story is loaded, load the story type
 loadType(story.value.storyType).then(() => {
- loadaudio().then(()=>{
+
    // Once the story type is loaded, set loading to false
    loading.value = false;
   wavesurfer = WaveSurfer.create({
@@ -126,9 +127,9 @@ loadType(story.value.storyType).then(() => {
   });
 console.log(audio)
   // Load an audio file
-  console.log("http://145.220.74.171:8080/media/get?="+story.value.id)
-  wavesurfer.load("http://145.220.74.171:8080/media/get?="+story.value.id);
- })
+  console.log("http://145.220.74.171:8080/media/get?id="+story.value.id)
+  wavesurfer.load("http://145.220.74.171:8080/media/get?id="+story.value.id);
+
 });
 });
 
@@ -137,6 +138,3 @@ console.log(audio)
 
 };
 </script>
-
-
-

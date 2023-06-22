@@ -15,5 +15,10 @@ npm run serve
 npm run build
 ```
 
+### Run for production
+```
+npm run prod
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -38,30 +38,55 @@ server.listen(3000, () => {
 app.use('/whatavue', express.static('dist'));
 
 app.post('/media/post', (req, res) => {
-  const fpath = mediaBasePath+req.query.id+mpegExt;
+  const fpath = mediaBasePath + req.query["id"] + mpegExt;
   console.log('Writing: ', fpath);
 
-  var fd = fs.createWriteStream(fpath);
-  req.pipe(fd);
-  res.status(200).send();
+  try {
+    var fd = fs.createWriteStream(fpath);
+    req.pipe(fd);
+    res.status(200).send();
+  } catch (err) {
+    console.error(err);
+    res.status(500).send();
+  }
 });
 
 
 app.post('/media/delete', (req, res) => {
-  const fpath = mediaBasePath+req.query.id+mpegExt;
+  const fpath = mediaBasePath + req.query["id"] + mpegExt;
   console.log('Removing: ', fpath);
-  fs.unlinkSync(fpath);
-  res.status(200).send();
+  try {
+    fs.unlinkSync(fpath);
+    res.status(200).send();
+  } catch (err) {
+    console.error(err);
+    res.status(500).send();
+  }
+
 });
 
 app.get('/media/get', (req, res) => {
-  const fpath = mediaBasePath+req.query.id+mpegExt;
+  const fpath = mediaBasePath + req.query["id"] + mpegExt;
   console.log('Reading: ', fpath);
 
-  var fd = fs.createReadStream(fpath);
+  try {
+    var fd = fs.createReadStream(fpath);
+    res.status(200);
+    fd.pipe(res);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send();
+  }
 
-  fd.pipe(res);
 });
+
+
+app.get('/media/path', (req, res) => {
+  const fpath = mediaBasePath + req.query["id"] + mpegExt;
+  console.log('Path: ', fpath);
+  res.send(fpath);
+});
+
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`)

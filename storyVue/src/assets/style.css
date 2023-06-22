@@ -213,6 +213,18 @@ input[type="submit"]{
   background-color: rgba(255, 255, 255, .3);
 }
 
+.playerAvatar>.avatar>.eyes{
+
+  left: 40px;
+
+}
+
+.playerAvatar>.avatar>.mouth{
+
+  left: 40px;
+
+}
+
 .playerAvatar{
   height: 45vh;
   width: 90vw;
